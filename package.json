@@ -9,7 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "^5.14.0",
+    "@mui/material": "^5.14.0",
     "autoprefixer": "10.4.14",
+    "material-ui-image": "^3.3.2",
     "next": "13.4.9",
     "postcss": "8.4.26",
     "react": "18.2.0",
