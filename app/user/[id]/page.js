@@ -50,6 +50,7 @@ const User = ({params}) => {
                       {data.email}
                     </Grid>
                   </Grid>
+
                   {/* address */}
                   <Grid container spacing={2} sx={{margin:'10px'}}>
                     <Grid item xs={2} md={2}>
@@ -59,6 +60,7 @@ const User = ({params}) => {
                       {`${data.address.street}, ${data.address.suite}, ${data.address.city}, ${data.address.zipcode}`}
                     </Grid>
                   </Grid>
+
                   {/* contact */}
                   <Grid container spacing={2} sx={{margin:'10px'}}>
                     <Grid item xs={2} md={2}>
@@ -68,6 +70,7 @@ const User = ({params}) => {
                       {data.phone}
                     </Grid>
                   </Grid>
+
                   {/* website */}
                   <Grid container spacing={2} sx={{margin:'10px'}}>
                     <Grid item xs={2} md={2}>
@@ -77,6 +80,7 @@ const User = ({params}) => {
                       {data.website}
                     </Grid>
                   </Grid>
+
                   {/* business */}
                   <Grid container spacing={2} sx={{margin:'10px'}}>
                     <Grid item xs={2} md={2}>
@@ -88,6 +92,7 @@ const User = ({params}) => {
                       <Typography variant='subtitle2'>Services : {data.company.bs}</Typography>
                     </Grid>
                   </Grid>
+                  
                 </Grid>
               </Grid>
             </Container>
