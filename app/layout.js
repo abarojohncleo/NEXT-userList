@@ -1,11 +1,11 @@
 import '@styles/globals.css'
 
 import Navbar from '@components/Navbar';
-import  Footer from '@components/Footer';
 
 export const metadata = {
   title: 'User List',
   description: 'Sample list of users',
+  manifest: '/manifest.json',
 }
 
 export default function RootLayout({ children }) {
@@ -15,7 +15,6 @@ export default function RootLayout({ children }) {
         <main>
           <Navbar />
           {children}
-          {/* <Footer /> */}
         </main>
       </body>
     </html>

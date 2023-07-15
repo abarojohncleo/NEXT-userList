@@ -15,18 +15,15 @@ export default function Home() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    const setUpData = async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users');
-      const data = await response.json(); 
-      console.log('response', data);
-      setData(data);
-    };
-
-    setUpData();
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+      })
   }, [])
 
   return (
-    <section className='main'>
+    <section className='home'>
       <List sx={{ width: '100%', maxWidth: 700, bgcolor: 'background.paper' }} className='list'>
         {data && (
           data.map((item) => (

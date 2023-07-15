@@ -18,14 +18,11 @@ const User = ({params}) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const setUpData = async () => {
-      console.log('params', params)
-      const response = await fetch(`https://jsonplaceholder.typicode.com/users/${params.id}`)
-      const data = await response.json(); 
-      console.log('single data', data)
-      setData(data)
-    }
-    setUpData();
+    fetch(`https://jsonplaceholder.typicode.com/users/${params.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+      })
   }, [])
 
   return (
@@ -34,64 +31,66 @@ const User = ({params}) => {
       <Container sx={{height:'90vh', padding:'20px'}}>
         <Box sx={{ flexGrow: 1 }}>
           {data && (
-            <Grid container spacing={2}>
-              <Grid item xs={12} md={4}>
+            <Container fixed>
+              <Grid container spacing={2}>
+                <Grid item xs={12} md={4}>
                   <Image
-                    src='/assets/sample-profile-picture.png'
+                    src='/assets/profile.png'
                     className='user_image'
                   />
+                </Grid>
+                <Grid item xs={12} md={8}>
+                  <Typography variant="h3" sx={{textAlign:'left'}}>{data.name}</Typography>
+                  {/* email address */}
+                  <Grid container spacing={2} sx={{margin:'10px'}}>
+                    <Grid item xs={2} md={2}>
+                      <AlternateEmailIcon />
+                    </Grid>
+                    <Grid item xs={10} md={10} sx={{textAlign:'left'}}>
+                      {data.email}
+                    </Grid>
+                  </Grid>
+                  {/* address */}
+                  <Grid container spacing={2} sx={{margin:'10px'}}>
+                    <Grid item xs={2} md={2}>
+                      <HomeIcon />
+                    </Grid>
+                    <Grid item xs={10} md={10} sx={{textAlign:'left'}}>
+                      {`${data.address.street}, ${data.address.suite}, ${data.address.city}, ${data.address.zipcode}`}
+                    </Grid>
+                  </Grid>
+                  {/* contact */}
+                  <Grid container spacing={2} sx={{margin:'10px'}}>
+                    <Grid item xs={2} md={2}>
+                      <ContactPhoneIcon />
+                    </Grid>
+                    <Grid item xs={10} md={10} sx={{textAlign:'left'}}>
+                      {data.phone}
+                    </Grid>
+                  </Grid>
+                  {/* website */}
+                  <Grid container spacing={2} sx={{margin:'10px'}}>
+                    <Grid item xs={2} md={2}>
+                      <LanguageIcon />
+                    </Grid>
+                    <Grid item xs={10} md={10} sx={{textAlign:'left'}}>
+                      {data.website}
+                    </Grid>
+                  </Grid>
+                  {/* business */}
+                  <Grid container spacing={2} sx={{margin:'10px'}}>
+                    <Grid item xs={2} md={2}>
+                      <BusinessIcon />
+                    </Grid>
+                    <Grid item xs={10} md={10} sx={{textAlign:'left'}}>
+                      <Typography variant='h6'>{data.company.name}</Typography>
+                      <Typography variant='subtitle2'><em>"{data.company.catchPhrase}"</em></Typography>
+                      <Typography variant='subtitle2'>Services : {data.company.bs}</Typography>
+                    </Grid>
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item xs={12} md={8}>
-                <Typography variant="h3" sx={{textAlign:'left'}}>{data.name}</Typography>
-                {/* email address */}
-                <Grid container spacing={2} sx={{margin:'10px'}}>
-                  <Grid item xs={2} md={2}>
-                    <AlternateEmailIcon />
-                  </Grid>
-                  <Grid item xs={10} md={10} sx={{textAlign:'left'}}>
-                    {data.email}
-                  </Grid>
-                </Grid>
-                {/* address */}
-                <Grid container spacing={2} sx={{margin:'10px'}}>
-                  <Grid item xs={2} md={2}>
-                    <HomeIcon />
-                  </Grid>
-                  <Grid item xs={10} md={10} sx={{textAlign:'left'}}>
-                    {`${data.address.street}, ${data.address.suite}, ${data.address.city}, ${data.address.zipcode}`}
-                  </Grid>
-                </Grid>
-                {/* contact */}
-                <Grid container spacing={2} sx={{margin:'10px'}}>
-                  <Grid item xs={2} md={2}>
-                    <ContactPhoneIcon />
-                  </Grid>
-                  <Grid item xs={10} md={10} sx={{textAlign:'left'}}>
-                    {data.phone}
-                  </Grid>
-                </Grid>
-                {/* website */}
-                <Grid container spacing={2} sx={{margin:'10px'}}>
-                  <Grid item xs={2} md={2}>
-                    <LanguageIcon />
-                  </Grid>
-                  <Grid item xs={10} md={10} sx={{textAlign:'left'}}>
-                    {data.website}
-                  </Grid>
-                </Grid>
-                {/* business */}
-                <Grid container spacing={2} sx={{margin:'10px'}}>
-                  <Grid item xs={2} md={2}>
-                    <BusinessIcon />
-                  </Grid>
-                  <Grid item xs={10} md={10} sx={{textAlign:'left'}}>
-                    <Typography variant='h6'>{data.company.name}</Typography>
-                    <Typography variant='subtitle2'><em>"{data.company.catchPhrase}"</em></Typography>
-                    <Typography variant='subtitle2'>Services : {data.company.bs}</Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
+            </Container>
           )}
         </Box>
       </Container>
