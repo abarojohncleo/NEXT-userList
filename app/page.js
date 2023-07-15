@@ -10,6 +10,8 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
+import saveResponseToDB from '@utils/indexedDb';
+
 export default function Home() {
 
   const [data, setData] = useState([])
@@ -17,6 +19,7 @@ export default function Home() {
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((res) => res.json())
+      // .then((data) => saveResponseToDB(data))
       .then((data) => {
         setData(data)
       })
